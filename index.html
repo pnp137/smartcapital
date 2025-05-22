@@ -1,237 +1,1346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartCapital - MSME Loans</title>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    /* Navigation Bar */
-    nav {
-      background-color: #0057A3;
-      color: white;
-      padding: 10px 20px;
-      position: sticky;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SmartCapital - Short-term Business Loans for MSMEs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    background: #fafbfc;
+    font-size: 16px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Navbar */
+  nav {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 16px 0;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-weight: 800;
+    font-size: 28px;
+    color: #1e40af;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo i {
+    color: #f59e0b;
+    font-size: 32px;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: #4b5563;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #1e40af;
+    background: #eff6ff;
+  }
+  
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #374151;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover;
+    opacity: 0.1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    font-weight: 400;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background: #f59e0b;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.2);
+  }
+  
+  /* Main sections */
+  .section {
+    padding: 80px 0;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+  
+  .section-subtitle {
+    font-size: 18px;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* About Section */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .about-image {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 48px;
+  }
+  
+  .about-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+  
+  .about-content p {
+    font-size: 16px;
+    color: #4b5563;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  
+  /* Problem Solution Section */
+  .problem-solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  
+  .problem-card, .solution-card {
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  
+  .problem-card {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+  }
+  
+  .solution-card {
+    background: #f0fdf4;
+    border-left: 4px solid #16a34a;
+  }
+  
+  .problem-card h4, .solution-card h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .problem-card h4 {
+    color: #dc2626;
+  }
+  
+  .solution-card h4 {
+    color: #16a34a;
+  }
+  
+  .problem-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .problem-card li, .solution-card li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .problem-card li::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+    font-weight: bold;
+  }
+  
+  .solution-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #16a34a;
+    font-weight: bold;
+  }
+  
+  /* Categories Section */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  
+  .category-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  }
+  
+  .category-card i {
+    font-size: 40px;
+    color: #3b82f6;
+    margin-bottom: 16px;
+  }
+  
+  .category-card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  
+  /* Services Section */
+  .services-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+  }
+  
+  .eligibility-card, .documents-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  
+  .eligibility-card h3, .documents-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .eligibility-card h3 i {
+    color: #10b981;
+  }
+  
+  .documents-card h3 i {
+    color: #3b82f6;
+  }
+  
+  .requirements-list {
+    list-style: none;
+  }
+  
+  .requirements-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #374151;
+    font-weight: 500;
+  }
+  
+  .requirements-list li i {
+    color: #10b981;
+    font-size: 16px;
+  }
+  
+  /* Rate Table Section */
+  .rate-table-container {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+  }
+  
+  .rate-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .rate-table th {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  
+  .rate-table td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 500;
+  }
+  
+  .rate-table tr:nth-child(even) {
+    background: #f8fafc;
+  }
+  
+  .rate-table tr:hover {
+    background: #eff6ff;
+  }
+  
+  /* Monthly Payment Example */
+  .payment-example {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    padding: 40px;
+    border-radius: 16px;
+    border: 2px solid #0ea5e9;
+    margin-bottom: 40px;
+  }
+  
+  .payment-example h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #0c4a6e;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  
+  .payment-table th {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    color: white;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .payment-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .payment-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .payment-table tr:nth-child(even) {
+    background: #f8fafc;
+  }
+  
+  .payment-table .highlight {
+    font-weight: 700;
+    color: #0c4a6e;
+    font-size: 16px;
+  }
+  
+  /* Why Us Section */
+  .why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .why-us-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .why-us-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  }
+  
+  .why-us-card i {
+    font-size: 48px;
+    color: #3b82f6;
+    margin-bottom: 20px;
+  }
+  
+  .why-us-card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+  
+  .why-us-card p {
+    color: #6b7280;
+    font-size: 14px;
+  }
+  
+  /* FAQ Section */
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  
+  .faq-item summary {
+    padding: 24px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item summary:hover {
+    background: #f8fafc;
+  }
+  
+  .faq-item summary::after {
+    content: '+';
+    font-size: 24px;
+    font-weight: 300;
+    color: #6b7280;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+  
+  .faq-item p {
+    padding: 0 24px 24px;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  
+  /* Contact Section */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  
+  .contact-info {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  
+  .contact-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-item i {
+    width: 40px;
+    height: 40px;
+    background: #eff6ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+  }
+  
+  .contact-form {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  
+  .contact-form h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+  
+  .contact-form iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 8px;
+  }
+  
+  /* Footer */
+  footer {
+    background: #1f2937;
+    color: white;
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  
+  .footer-section h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #f59e0b;
+  }
+  
+  .footer-section p,
+  .footer-section li {
+    color: #d1d5db;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+  }
+  
+  .footer-section a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section a:hover {
+    color: #f59e0b;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 20px;
+    text-align: center;
+    color: #9ca3af;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      position: fixed;
       top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
+      left: -100%;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      flex-direction: column;
+      justify-content: center;
+      transition: left 0.3s ease;
+    }
+    
+    .nav-links.show {
+      left: 0;
+    }
+    
+    .menu-toggle {
+      display: block;
+    }
+    
+    .hero {
+      padding: 60px 0 80px;
+    }
+    
+    .section {
+      padding: 60px 0;
+    }
+    
+    .about-grid,
+    .problem-solution,
+    .services-content,
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .categories-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
       align-items: center;
     }
-
-    nav .logo {
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li {
-      margin-left: 20px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    nav ul li a:hover {
-      text-decoration: underline;
-    }
-
-    header {
-      background: url('hero.jpg') center center / cover no-repeat;
-      color: white;
-      padding: 100px 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    header * {
-      position: relative;
-      z-index: 2;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
-    }
-
-    header p {
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #ff7a00;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      color: #0057A3;
-    }
-
-    table {
+    
+    .btn {
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+      max-width: 300px;
+      justify-content: center;
     }
-
-    table, th, td {
-      border: 1px solid #ccc;
+    
+    .payment-table th,
+    .payment-table td {
+      padding: 12px 8px;
+      font-size: 14px;
     }
-
-    th, td {
-      padding: 12px;
-      text-align: left;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    footer {
-      text-align: center;
+    
+    .payment-example {
       padding: 20px;
-      background: #f0f0f0;
-      color: #666;
     }
-
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav ul li {
-        margin: 10px 0 0 0;
-      }
-
-      header h1 {
-        font-size: 1.5em;
-      }
-
-      header p {
-        font-size: 1em;
-      }
+    
+    .footer-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
     }
-  </style>
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 16px;
+    }
+    
+    .nav-container {
+      padding: 0 16px;
+    }
+    
+    .eligibility-card,
+    .documents-card,
+    .contact-info,
+    .contact-form {
+      padding: 24px;
+    }
+    
+    .rate-table th,
+    .rate-table td {
+      padding: 12px 8px;
+      font-size: 14px;
+    }
+    
+    .contact-form iframe {
+      height: 500px;
+    }
+  }
+</style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">SmartCapital</div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#loan">Loan Offering</a></li>
-      <li><a href="#why">Why Us</a></li>
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <i class="fas fa-chart-line"></i>
+      SmartCapital
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#rate-terms">Rates</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
+  </div>
+</nav>
 
-  <header>
-    <h1>SmartCapital</h1>
-    <p>Empowering MSMEs with Flexible Working Capital</p>
-    <a href="#contact" class="cta-button">Get in Touch</a>
-  </header>
+<section id="home" class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Short-term Business Loans for MSMEs</h1>
+      <p>Flexible working capital solutions with daily percentage repayments based on your digital sales.</p>
+      <div class="cta-buttons">
+        <a href="#rate-terms" class="btn btn-primary">
+          <i class="fas fa-calculator"></i>
+          Check Rates
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <i class="fas fa-phone"></i>
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="about">
-    <h2>About SmartCapital</h2>
-    <p>SmartCapital provides fast, flexible working capital solutions for India’s MSMEs through our Merchant Cash Advance (MCA) program. We leverage your digital sales to match repayment with your daily cash flow. With deep experience in informal lending and a seamless digital collection ecosystem, we help businesses grow without the stress of fixed EMIs.</p>
-  </section>
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Empowering MSMEs with Smart Financing</h2>
+      <p class="section-subtitle">Bridging the gap between traditional lending and modern business needs</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-image">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <div class="about-content">
+        <h3>Your Digital Finance Partner</h3>
+        <p>
+          SmartCapital specializes in providing short-term business loans tailored for MSMEs transitioning to digital payments. Our innovative merchant cash advance model offers flexible repayment options that align with your daily cash flow.
+        </p>
+        <p>
+          With deep expertise in MSME lending and a focus on businesses in Mumbai and Bangalore, we're building the future of working capital financing for the digital economy.
+        </p>
+        <p>
+          <strong>Mission:</strong> To democratize access to business capital through technology-driven solutions that understand the unique needs of modern MSMEs.
+        </p>
+      </div>
+    </div>
+    
+    <div class="problem-solution">
+      <div class="problem-card">
+        <h4><i class="fas fa-exclamation-triangle"></i> Current Challenges</h4>
+        <ul>
+          <li>MSMEs struggle to access flexible, fast credit</li>
+          <li>Traditional loans have fixed EMIs that don't match daily cash flows</li>
+          <li>Cash-based businesses moving digital need working capital</li>
+          <li>Complex documentation and lengthy approval processes</li>
+          <li>High interest rates and hidden charges</li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <h4><i class="fas fa-lightbulb"></i> Our Solution: Merchant Cash Advance</h4>
+        <ul>
+          <li>Advance against future digital/card sales</li>
+          <li>Repayment via daily % of sales</li>
+          <li>Fully automated via PGs/POS systems</li>
+          <li>Ideal for daily sales-driven businesses</li>
+          <li>Quick approvals within 24-48 hours</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="loan">
-    <h2>Loan Offering</h2>
-    <p>We offer short-term advances based on your future digital or card sales. You repay a fixed percentage of your daily sales — automatically and effortlessly.</p>
-    <table>
-      <tr>
-        <th>Feature</th>
-        <th>Details</th>
-      </tr>
-      <tr>
-        <td>Loan Amount</td>
-        <td>₹50,000 – ₹1,00,000</td>
-      </tr>
-      <tr>
-        <td>Tenure</td>
-        <td>1 – 4 months</td>
-      </tr>
-      <tr>
-        <td>Repayment</td>
-        <td>10% – 20% of daily digital sales</td>
-      </tr>
-      <tr>
-        <td>Top-up</td>
-        <td>Available after 50% – 60% repayment</td>
-      </tr>
-      <tr>
-        <td>Repayment Mode</td>
-        <td>POS, Payment Gateway, or NACH</td>
-      </tr>
-      <tr>
-        <td>Ideal For</td>
-        <td>Kirana, Restaurants, Petrol Pumps, Pharmacies, Online Sellers</td>
-      </tr>
-    </table>
-  </section>
+<section class="section" style="background: #f8fafc;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Business Categories We Serve</h2>
+      <p class="section-subtitle">Specialized financing for various MSME sectors in Mumbai and Bangalore</p>
+    </div>
+    <div class="categories-grid">
+      <div class="category-card">
+        <i class="fas fa-store"></i>
+        <h4>Kirana Stores</h4>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-utensils"></i>
+        <h4>Restaurants</h4>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-gas-pump"></i>
+        <h4>Petrol Pumps</h4>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-pills"></i>
+        <h4>Pharmacy</h4>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-shopping-cart"></i>
+        <h4>Online Sellers</h4>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-tools"></i>
+        <h4>Service Providers</h4>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; color: #3b82f6; font-weight: 600; font-size: 18px;">
+        <i class="fas fa-map-marker-alt"></i>
+        Currently serving Mumbai and Bangalore regions
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="why">
-    <h2>Why Choose SmartCapital</h2>
-    <ul>
-      <li>Built for daily sales-based MSMEs</li>
-      <li>No fixed EMIs — repayment adjusts with your revenue</li>
-      <li>Automated deductions reduce hassle</li>
-      <li>Proven experience in informal sector lending</li>
-      <li>Strong digital collection and monitoring tools</li>
-    </ul>
-  </section>
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Short-term Business Loans</h2>
+      <p class="section-subtitle">Quick working capital solutions designed for your business growth</p>
+    </div>
+    
+    <div style="background: white; padding: 40px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+      <h3 style="font-size: 24px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; text-align: center;">
+        <i class="fas fa-info-circle" style="color: #3b82f6; margin-right: 12px;"></i>
+        About Our Short-term Business Loans
+      </h3>
+      <p style="font-size: 16px; color: #4b5563; line-height: 1.7; text-align: center; max-width: 800px; margin: 0 auto;">
+        Our short-term business loans are specifically designed for MSMEs who need quick access to working capital. 
+        Unlike traditional loans with fixed EMIs, our merchant cash advance model allows you to repay based on your daily sales, 
+        making it perfect for businesses with fluctuating cash flows. Get funds within 24-48 hours with minimal documentation.
+      </p>
+    </div>
+    
+    <div class="services-content">
+      <div class="eligibility-card">
+        <h3><i class="fas fa-user-check"></i> Eligibility Criteria</h3>
+        <ul class="requirements-list">
+          <li><i class="fas fa-check"></i> Indian citizen</li>
+          <li><i class="fas fa-check"></i> Business owner or Partner</li>
+          <li><i class="fas fa-check"></i> Age 21 years and above</li>
+          <li><i class="fas fa-check"></i> Business Bank Account</li>
+          <li><i class="fas fa-check"></i> CIBIL Score 650+</li>
+          <li><i class="fas fa-check"></i> Monthly Revenue ₹50,000+</li>
+          <li><i class="fas fa-check"></i> Business operational for 6+ months</li>
+          <li><i class="fas fa-check"></i> Digital payment acceptance (UPI/Card)</li>
+        </ul>
+      </div>
+      
+      <div class="documents-card">
+        <h3><i class="fas fa-file-alt"></i> Required Documents</h3>
+        <ul class="requirements-list">
+          <li><i class="fas fa-check"></i> Business loan application form</li>
+          <li><i class="fas fa-check"></i> Identity Proof (Aadhaar/PAN)</li>
+          <li><i class="fas fa-check"></i> Address Proof (Utility bills)</li>
+          <li><i class="fas fa-check"></i> 6 Months Bank Statements</li>
+          <li><i class="fas fa-check"></i> Business Registration Certificate</li>
+          <li><i class="fas fa-check"></i> GST Registration (if applicable)</li>
+          <li><i class="fas fa-check"></i> Digital payment records</li>
+          <li><i class="fas fa-check"></i> Business Photos/Videos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Email:</strong> youremail@example.com</p>
-    <p><strong>Phone/WhatsApp:</strong> +91-XXXXXXXXXX</p>
-    <p><strong>Location:</strong> [Your City], India</p>
-  </section>
+<section id="rate-terms" class="section" style="background: #f8fafc;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Rates & Terms</h2>
+      <p class="section-subtitle">Transparent pricing with flexible repayment options</p>
+    </div>
+    
+    <div class="rate-table-container">
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Loan Amount</th>
+            <th>Factor Rate</th>
+            <th>Repayment Tenure</th>
+            <th>Daily Repayment</th>
+            <th>Processing Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>₹50,000 - ₹25,00,000</strong></td>
+            <td>1.30 - 1.35</td>
+            <td>90 - 120 days</td>
+            <td>6% - 12% of daily sales</td>
+            <td>2% + GST</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="payment-example">
+      <h4><i class="fas fa-calculator"></i> Monthly Payment Cycle Example</h4>
+      <table class="payment-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Advance Amount</strong></td>
+            <td class="highlight">₹10,00,000</td>
+          </tr>
+          <tr>
+            <td><strong>Factor Rate</strong></td>
+            <td class="highlight">1.35</td>
+          </tr>
+          <tr>
+            <td><strong>Gross Repayment</strong></td>
+            <td class="highlight">₹13,50,000</td>
+          </tr>
+          <tr>
+            <td><strong>Repayment Tenure</strong></td>
+            <td class="highlight">120 days</td>
+          </tr>
+          <tr>
+            <td><strong>Yield (Annual)</strong></td>
+            <td class="highlight">~60% p.a.</td>
+          </tr>
+          <tr>
+            <td><strong>Daily Repayment</strong></td>
+            <td class="highlight">₹11,250</td>
+          </tr>
+          <tr>
+            <td><strong>Processing Fee</strong></td>
+            <td class="highlight">₹20,000 + GST</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-top: 30px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <i class="fas fa-info-circle" style="color: #3b82f6; font-size: 20px;"></i>
+        <h4 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0;">Important Notes</h4>
+      </div>
+      <ul style="color: #6b7280; line-height: 1.7; padding-left: 20px;">
+        <li>Repayment is automatically deducted as a percentage of daily digital sales</li>
+        <li>No fixed EMI - payments adjust based on your business performance</li>
+        <li>Early repayment options available without prepayment penalties</li>
+        <li>Factor rate varies based on business profile and credit assessment</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    &copy; 2025 SmartCapital. All rights reserved.
-  </footer>
+<section id="why-us" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Why Choose SmartCapital?</h2>
+      <p class="section-subtitle">Experience the difference with our customer-first approach</p>
+    </div>
+    
+    <div class="why-us-grid">
+      <div class="why-us-card">
+        <i class="fas fa-clock"></i>
+        <h4>Quick Approval</h4>
+        <p>Get approved within 24-48 hours with minimal documentation and fast disbursal</p>
+      </div>
+      <div class="why-us-card">
+        <i class="fas fa-chart-line"></i>
+        <h4>Flexible Repayment</h4>
+        <p>Repay based on daily sales percentage - no fixed EMIs that burden your cash flow</p>
+      </div>
+      <div class="why-us-card">
+        <i class="fas fa-shield-alt"></i>
+        <h4>Transparent Pricing</h4>
+        <p>No hidden charges or surprise fees - clear and upfront pricing structure</p>
+      </div>
+      <div class="why-us-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h4>Digital Integration</h4>
+        <p>Seamless integration with your POS and payment gateway systems</p>
+      </div>
+      <div class="why-us-card">
+        <i class="fas fa-headset"></i>
+        <h4>Dedicated Support</h4>
+        <p>Personal relationship manager for all your queries and support needs</p>
+      </div>
+      <div class="why-us-card">
+        <i class="fas fa-trophy"></i>
+        <h4>MSME Expertise</h4>
+        <p>Deep understanding of MSME challenges with tailored financial solutions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section" style="background: #f8fafc;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Get answers to common questions about our business loans</p>
+    </div>
+    
+    <div class="faq-container">
+      <details class="faq-item">
+        <summary>What is a Merchant Cash Advance?</summary>
+        <p>A Merchant Cash Advance (MCA) is a financing option where you receive an upfront sum in exchange for a percentage of your future digital sales. Unlike traditional loans, repayment is tied to your daily sales volume, making it flexible for businesses with variable income.</p>
+      </details>
+      
+      <details class="faq-item">
+        <summary>How quickly can I get the funds?</summary>
+        <p>Once approved, funds are typically disbursed within 24-48 hours. Our streamlined process and minimal documentation requirements ensure quick access to working capital when you need it most.</p>
+      </details>
+      
+      <details class="faq-item">
+        <summary>What if my daily sales are low on some days?</summary>
+        <p>That's the beauty of our model! On days with lower sales, your repayment amount automatically adjusts downward. You only pay a percentage of what you actually earn, ensuring cash flow is never strained.</p>
+      </details>
+      
+      <details class="faq-item">
+        <summary>Do I need collateral or guarantors?</summary>
+        <p>No, our merchant cash advance is unsecured. We don't require collateral or personal guarantors. The advance is secured against your future digital sales receivables.</p>
+      </details>
+      
+      <details class="faq-item">
+        <summary>What digital payment systems do you integrate with?</summary>
+        <p>We integrate with all major payment gateways including Razorpay, PayU, CCAvenue, and POS systems from major providers. Our team will help set up the integration seamlessly.</p>
+      </details>
+      
+      <details class="faq-item">
+        <summary>Can I repay early without penalties?</summary>
+        <p>Yes, early repayment is allowed without any prepayment penalties. This can help you save on the total cost of the advance.</p>
+      </details>
+      
+      <details class="faq-item">
+        <summary>What is the minimum CIBIL score required?</summary>
+        <p>We require a minimum CIBIL score of 650. However, we also consider other factors like business performance, cash flow patterns, and digital payment history in our assessment.</p>
+      </details>
+      
+      <details class="faq-item">
+        <summary>Are there any hidden charges?</summary>
+        <p>No, we believe in complete transparency. All costs including the factor rate and processing fee are clearly disclosed upfront. There are no hidden charges or surprise fees.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">Ready to accelerate your business growth? Contact us today</p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <strong>Phone</strong><br>
+            +91 98765 43210<br>
+            +91 98765 43211
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong>Email</strong><br>
+            info@smartcapital.com<br>
+            loans@smartcapital.com
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Office Locations</strong><br>
+            Mumbai: Andheri East<br>
+            Bangalore: Koramangala
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Business Hours</strong><br>
+            Monday - Saturday<br>
+            9:00 AM - 7:00 PM
+          </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f0f9ff; border-radius: 8px; border-left: 4px solid #3b82f6;">
+          <h4 style="color: #1e40af; margin-bottom: 12px;">Quick Response Guarantee</h4>
+          <p style="color: #374151; font-size: 14px; margin: 0;">We respond to all inquiries within 2 hours during business hours. For urgent requirements, call us directly.</p>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Apply for Business Loan</h3>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/viewform?embedded=true" 
+                width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
+          Loading...
+        </iframe>
+        <p style="font-size: 12px; color: #6b7280; margin-top: 16px; text-align: center;">
+          <i class="fas fa-lock"></i> Your information is secure and will be used only for loan processing purposes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>SmartCapital</h4>
+        <p>Empowering MSMEs with flexible short-term business loans and merchant cash advances. Your trusted partner for working capital solutions.</p>
+        <div style="margin-top: 20px;">
+          <i class="fas fa-shield-alt" style="color: #f59e0b; margin-right: 8px;"></i>
+          <span>RBI Registered NBFC</span>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Short-term Business Loans</a></li>
+          <li><a href="#services">Merchant Cash Advance</a></li>
+          <li><a href="#services">Working Capital Finance</a></li>
+          <li><a href="#rate-terms">Quick Approval Loans</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact Support</a></li>
+          <li><a href="#">Loan Calculator</a></li>
+          <li><a href="#">Application Status</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Fair Practice Code</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 SmartCapital. All rights reserved. | CIN: UXXXXXXXXXXXXXXXX | NBFC License: NXXXXXXXX</p>
+      <p style="font-size: 12px; margin-top: 8px;">
+        Disclaimer: This website is for informational purposes only. Loan approval is subject to credit assessment and company policies.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.getElementById('menu-toggle').addEventListener('click', function() {
+  const navMenu = document.getElementById('nav-menu');
+  navMenu.classList.toggle('show');
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      // Close mobile menu if open
+      document.getElementById('nav-menu').classList.remove('show');
+    }
+  });
+});
+
+// Active navigation highlighting
+window.addEventListener('scroll', function() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop <= 100) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// FAQ toggle animation
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('toggle', function() {
+    if (this.open) {
+      this.style.marginBottom = '20px';
+    } else {
+      this.style.marginBottom = '16px';
+    }
+  });
+});
+
+// Form submission tracking (placeholder)
+function trackFormSubmission() {
+  // Add analytics tracking here if needed
+  console.log('Form submission tracked');
+}
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('SmartCapital website loaded successfully');
+  
+  // Add loading animation end
+  document.body.style.opacity = '1';
+  
+  // Lazy load images if needed
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+  }
+});
+</script>
 
 </body>
 </html>
